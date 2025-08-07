@@ -4,6 +4,10 @@ on: [pull_request]
 
 jobs:
   test:
+    permissions:
+     checks: write
+     pull-requests: write
+     
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
