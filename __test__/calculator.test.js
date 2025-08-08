@@ -1,4 +1,4 @@
-const { multiply, add } = require('../src/calculator');
+const { multiply, add, subtract } = require('../src/calculator');
 
 describe('multiply', () => {
     test('multiplies two positive numbers', () => {
@@ -90,5 +90,55 @@ describe('add', () => {
 
     test('adds non-integer numbers', () => {
         expect(add(0.1, 0.2)).toBeCloseTo(0.3);
+    });
+});
+
+describe('subtract', () => {
+    test('subtracts two positive numbers', () => {
+        expect(subtract(5, 3)).toBe(2);
+    });
+
+    test('subtracts a positive and a negative number', () => {
+        expect(subtract(5, -3)).toBe(8);
+        expect(subtract(-4, 5)).toBe(-9);
+    });
+
+    test('subtracts two negative numbers', () => {
+        expect(subtract(-2, -8)).toBe(6);
+    });
+
+    test('subtracts zero', () => {
+        expect(subtract(0, 10)).toBe(-10);
+        expect(subtract(7, 0)).toBe(7);
+        expect(subtract(0, 0)).toBe(0);
+    });
+
+    test('subtracts decimals', () => {
+        expect(subtract(2.5, 4)).toBeCloseTo(-1.5);
+        expect(subtract(-1.5, 2)).toBeCloseTo(-3.5);
+    });
+
+    test('subtracts large numbers', () => {
+        expect(subtract(1000000, 1000000)).toBe(0);
+        expect(subtract(2000000, 1000000)).toBe(1000000);
+    });
+
+    test('subtracts with Infinity', () => {
+        expect(subtract(Infinity, 2)).toBe(Infinity);
+        expect(subtract(-Infinity, 2)).toBe(-Infinity);
+        expect(subtract(2, Infinity)).toBe(-Infinity);
+        expect(subtract(Infinity, Infinity)).toBeNaN();
+        expect(subtract(-Infinity, -Infinity)).toBeNaN();
+    });
+
+    test('subtracts with NaN', () => {
+        expect(subtract(NaN, 5)).toBeNaN();
+        expect(subtract(5, NaN)).toBeNaN();
+        expect(subtract(NaN, NaN)).toBeNaN();
+    });
+
+    test('subtracts non-integer numbers', () => {
+        expect(subtract(0.3, 0.1)).toBeCloseTo(0.2);
+        expect(subtract(0.1, 0.3)).toBeCloseTo(-0.2);
     });
 });
