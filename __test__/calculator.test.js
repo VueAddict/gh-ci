@@ -1,4 +1,59 @@
-const { multiply, add, subtract } = require('../src/calculator');
+const { multiply, add, subtract, divide } = require('../src/calculator');
+
+describe('divide', () => {
+    test('divides positive numbers', () => {
+        expect(divide(6, 3)).toBe(2);
+    });
+
+    test('divides negative numbers', () => {
+        expect(divide(-6, -3)).toBe(2);
+    });
+
+    test('divides positive by negative', () => {
+        expect(divide(6, -3)).toBe(-2);
+    });
+
+    test('divides negative by positive', () => {
+        expect(divide(-6, 3)).toBe(-2);
+    });
+
+    test('division by positive zero gives Infinity', () => {
+        expect(divide(5, 0)).toBe(Infinity);
+    });
+
+    test('division by negative zero gives -Infinity', () => {
+        expect(divide(5, -0)).toBe(-Infinity);
+    });
+
+    test('negative divided by zero gives -Infinity', () => {
+        expect(divide(-5, 0)).toBe(-Infinity);
+    });
+
+    test('negative divided by negative zero gives Infinity', () => {
+        expect(divide(-5, -0)).toBe(Infinity);
+    });
+
+    test('zero divided by positive number is 0', () => {
+        expect(divide(0, 5)).toBe(0);
+    });
+
+    test('zero divided by negative number is -0', () => {
+        expect(Object.is(divide(0, -5), -0)).toBe(true);
+    });
+
+    test('zero divided by zero is NaN', () => {
+        expect(Number.isNaN(divide(0, 0))).toBe(true);
+    });
+
+    test('NaN in numerator returns NaN', () => {
+        expect(Number.isNaN(divide(NaN, 5))).toBe(true);
+    });
+
+    test('NaN in denominator returns NaN', () => {
+        expect(Number.isNaN(divide(5, NaN))).toBe(true);
+    });
+});
+
 
 describe('multiply', () => {
     test('multiplies two positive numbers', () => {
