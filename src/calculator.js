@@ -7,7 +7,9 @@ function add(a, b) {
     return a + b;
 }
 
+
 module.exports = {
     multiply,
-    add
+    add,
+    sampleSecret
 };
