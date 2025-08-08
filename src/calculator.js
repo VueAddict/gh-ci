@@ -11,5 +11,4 @@ function add(a, b) {
 module.exports = {
     multiply,
     add,
-    sampleSecret
 };
