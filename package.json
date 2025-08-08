@@ -1,8 +1,13 @@
 {
-  "name": "gh-ci",
-  "version": "1.0.0",
+  "name": "@vueaddict/gh-ci",
+  "version": "1.2.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/calculator.js",
+  "files": ["/src"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VueAddict/gh-ci.git"
+  },
   "scripts": {
     "test": "jest --coverage"
   },
